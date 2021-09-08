@@ -1,3 +1,4 @@
+import 'package:bankingapp/widget/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bankingapp/screens/homescreen.dart';
 import 'package:bankingapp/screens/expensesscreen.dart';
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyBottomNavigationBar(),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
+      home: MySplash(),
     );
   }
 }

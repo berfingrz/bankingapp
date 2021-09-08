@@ -1,3 +1,4 @@
+import 'package:bankingapp/database/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,15 +7,40 @@ import 'package:bankingapp/constants/color.dart';
 import 'package:bankingapp/models/card.dart';
 //import 'package:bankingapp/models/operation.dart';
 import 'package:bankingapp/models/transaction.dart';
+import 'package:bankingapp/widget/checkconnection.dart';
 
 class HomeScreen extends StatefulWidget {
+  final transactionid;
+  final transactionname;
+  final transactiondate;
+  final transactionprice;
+  const HomeScreen(
+      {Key? key,
+      this.transactionid,
+      this.transactionname,
+      this.transactiondate,
+      this.transactionprice})
+      : super(key: key);
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState(
+      transactionid: this.transactionid,
+      transactionname: this.transactionname,
+      transactiondate: this.transactiondate,
+      transactionprice: this.transactionprice);
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var transactionid;
+  var transactionname;
+  var transactiondate;
+  var transactionprice;
+  _HomeScreenState(
+      {this.transactionid,
+      this.transactionname,
+      this.transactiondate,
+      this.transactionprice});
   int current = 0;
-
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -23,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return result;
   }
 
+  final dbHelper = DbHelper();
   @override
   Widget build(BuildContext context) {
     // First Week
@@ -284,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   ListView.builder(
-                    itemCount: transactions.length,
+                    itemCount: TransactionsTb.length,
                     padding: EdgeInsets.only(left: 16, right: 16),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
