@@ -1,4 +1,4 @@
-import 'dart:async';
+/*import 'dart:async';
 import 'dart:io';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -20,9 +20,9 @@ class DbHelper {
     return await openDatabase(path);
   }
 
-  Future<List<TransactionsTb>> getTransaction() async {
+  Future<List<TransactionsTb>> getTransaction(transactionid) async {
     var dbClient = await db;
     var result = await dbClient.rawQuery("SELECT * FROM Transactions");
     return result.map((data) => TransactionsTb.fromMap(data)).toList();
   }
-}
+}*/

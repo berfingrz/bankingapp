@@ -1,9 +1,9 @@
 import 'package:bankingapp/widget/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bankingapp/screens/homescreen.dart';
-import 'package:bankingapp/screens/expensesscreen.dart';
+import 'package:bankingapp/screens/coinscreen.dart';
 import 'package:bankingapp/screens/paymentscreen.dart';
-import 'package:bankingapp/screens/transferscreen.dart';
+import 'package:bankingapp/screens/historyscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,9 +32,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     HomeScreen(),
-    TransferScreen(),
+    HistoryScreen(),
     PaymentScreen(),
-    ExpensesScreen(),
+    CoinScreen(),
   ];
 
   void onTappedBar(int index) {
@@ -59,14 +59,14 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                  icon: new Icon(Icons.money_off), label: 'Transfer'),
+                  icon: new Icon(Icons.money_off), label: 'Histories'),
               BottomNavigationBarItem(
                 icon: new Icon(Icons.payment),
                 label: 'Payment',
               ),
               BottomNavigationBarItem(
                 icon: new Icon(Icons.money),
-                label: 'Expenses',
+                label: 'Coin',
               ),
             ],
           ),

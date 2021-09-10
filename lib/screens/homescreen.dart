@@ -1,4 +1,4 @@
-import 'package:bankingapp/database/database_helper.dart';
+//import 'package:bankingapp/database/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +7,7 @@ import 'package:bankingapp/constants/color.dart';
 import 'package:bankingapp/models/card.dart';
 //import 'package:bankingapp/models/operation.dart';
 import 'package:bankingapp/models/transaction.dart';
-import 'package:bankingapp/widget/checkconnection.dart';
+//import 'package:bankingapp/widget/checkconnection.dart';
 
 class HomeScreen extends StatefulWidget {
   final transactionid;
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return result;
   }
 
-  final dbHelper = DbHelper();
+  //final dbHelper = DbHelper();
   @override
   Widget build(BuildContext context) {
     // First Week
@@ -311,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   ListView.builder(
-                    itemCount: TransactionsTb.length,
+                    itemCount: transactions.length,
                     padding: EdgeInsets.only(left: 16, right: 16),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {

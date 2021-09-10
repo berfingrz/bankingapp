@@ -1,44 +1,39 @@
+/*
 class TransactionsTb {
-  late int? transactionId;
-  late String? transactionName;
-  late String? transactionDate;
-  late String? transactionPrice;
+  late int? transactionid;
+  late String transactionname;
+  late String transactiondate;
+  late String transactionprice;
 
   //Constructor
   TransactionsTb(
-      {required this.transactionId,
-      required this.transactionName,
-      required this.transactionDate,
-      required this.transactionPrice});
+      {required this.transactionid,
+      required this.transactionname,
+      required this.transactiondate,
+      required this.transactionprice});
 
   // Extract a Product Object from a Map Oject
   TransactionsTb.fromMap(Map<String, dynamic> map) {
-    transactionId = map['transaction_id'];
-    transactionName = map['transaction_name'];
-    transactionDate = map['transaction_date'];
-    transactionPrice = map['transaction_price'];
+    transactionid = map['transaction_id'];
+    transactionname = map['transaction_name'];
+    transactiondate = map['transaction_date'];
+    transactionprice = map['transaction_price'];
   }
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
-      'transaction_id': transactionId,
-      'transaction_name': transactionName,
-      'transaction_date': transactionDate,
-      'transaction_price': transactionPrice
+      'transaction_id': transactionid,
+      'transaction_name': transactionname,
+      'transaction_date': transactiondate,
+      'transaction_price': transactionprice
     };
     return map;
   }
 }
 
+*/
 
-
-
-
-
-
-
-
-/*class TransactionModel {
+class TransactionModel {
   String name;
   String photo;
   String date;
@@ -72,4 +67,3 @@ List<Map<String, dynamic>> transactionData = [
     "amount": "+\$5.00"
   }
 ];
-*/
