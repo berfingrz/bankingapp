@@ -8,3 +8,6 @@ const kBlackColor = Color(0xFF3A3A3A);
 const kTenBlackColor = Color(0x10000000);
 const kBackgroundColor = Color(0xFFFAFAFA);
 const kGreyColor = Color(0xff8A959E);
+const lightGrey = Color(0xffE8E8E9);
+const black = Color(0xff14121E);
+const grey = Color(0xFF8492A2);

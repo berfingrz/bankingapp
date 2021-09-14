@@ -1,134 +1,172 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:bankingapp/constants/color.dart';
 
 class HistoryScreen extends StatefulWidget {
   _HistoryScreen createState() => _HistoryScreen();
 }
 
 class _HistoryScreen extends State<HistoryScreen> {
-  /*
-  List<HistoryModel> histories = [
-    HistoryModel(
-        'Paid to', 'Alex', 100.0, '13 May 2022', 'images/ico_logo_red.png'),
-    HistoryModel('Electricity\nbill paid', 'Fantasy lights', 330.0,
-        '13 May 2022', 'images/ico_logo_red.png'),
-    HistoryModel('Mobile\nrecharged', 'Fantasy mobile', 750.0, '21 Oct 2022',
-        'images/ico_logo_red.png'),
-    HistoryModel('Received from', 'Annalena', 30.0, '01 Dec 2022',
-        'images/ico_logo_blue.png'),
-  ];*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      title: Text('Transfer Histories'),
-      backgroundColor: Colors.indigo, // status bar color
-      brightness: Brightness.dark,
-    ) /*
+      appBar: AppBar(
+        title: Text('Transfer Histories'),
+        backgroundColor: Colors.indigo, // status bar color
+        brightness: Brightness.dark,
+      ),
       body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
+          physics: ClampingScrollPhysics(),
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 0),
-              child: Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: histories.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return _historyWidget(histories[index]);
-                          }),
-                    ),
-                  ],
-                ),
+              padding:
+                  EdgeInsets.only(left: 16, right: 10, bottom: 13, top: 29),
+              child: Text(
+                'Transaction Histories',
+                style: GoogleFonts.inter(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w300,
+                    color: kBlackColor),
               ),
-            )
-          ],
-        ),
-      ),*/
-        );
-  }
-  /*
-  Widget _historyWidget(HistoryModel history) {
-    return Container(
-//      height: 100.0,
-      margin: EdgeInsets.only(top: 0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 0.0),
-          child: Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(right: 0.0),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            ListView.builder(
+              itemCount: histories.length,
+              padding: EdgeInsets.only(left: 16, right: 16),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 76,
+                  margin: EdgeInsets.only(bottom: 13),
+                  padding:
+                      EdgeInsets.only(bottom: 12, right: 22, top: 12, left: 24),
+                  decoration: BoxDecoration(
+                      color: kWhiteColor,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                            color: kTenBlackColor,
+                            blurRadius: 10,
+                            spreadRadius: 5,
+                            offset: Offset(8.0, 8.0))
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        history.historyType,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.left,
-                      ),
-                      Text(history.receiverName)
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        '\$${history.amount}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            height: 57,
+                            width: 57,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: AssetImage(histories[index].photo),
+                                )),
+                          ),
+                          SizedBox(
+                            width: 13,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                histories[index].name,
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: kBlackColor),
+                              ),
+                              Text(
+                                histories[index].date,
+                                style: GoogleFonts.inter(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: kGreyColor),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              'Debit from \non ${history.date}',
-                              textAlign: TextAlign.right,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0, top: 4.0),
-                            child: Image.asset(
-                              history.cardLogoPath,
-                            ),
+                          Text(
+                            histories[index].amount,
+                            style: GoogleFonts.inter(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: kBlueColor),
                           )
                         ],
                       )
                     ],
                   ),
-                ),
-              )
-            ],
-          ),
+                );
+              },
+            )
+          ],
         ),
       ),
     );
-  } */
+  }
 }
-/*
-class HistoryModel {
-  final String historyType;
-  final String receiverName;
-  final double amount;
-  final String date;
-  final String cardLogoPath;
 
-  HistoryModel(this.historyType, this.receiverName, this.amount, this.date,
-      this.cardLogoPath);
-}*/
+class HistoriesModel {
+  String name;
+  String photo;
+  String date;
+  String amount;
+
+  HistoriesModel(this.name, this.photo, this.date, this.amount);
+}
+
+List<HistoriesModel> histories = historiesData
+    .map((item) => HistoriesModel(
+        item['name'], item['photo'], item['date'], item['amount']))
+    .toList();
+
+List<Map<String, dynamic>> historiesData = [
+  {
+    "name": "School Fee",
+    "photo": "assets/images/university.png",
+    "date": "12st Sep 2021",
+    "amount": "-\€127"
+  },
+  {
+    "name": "Flying Ticket",
+    "photo": "assets/images/airplane-flying.png",
+    "date": "1st Oct 2021",
+    "amount": "-\$100.00"
+  },
+  {
+    "name": "Starbucks",
+    "photo": "assets/images/big-cup-of-coffee.png",
+    "date": "15th Mar 2022",
+    "amount": "-\$5.00"
+  },
+  {
+    "name": "Getir",
+    "photo": "assets/images/cargo-truck.png",
+    "date": "17th June 2022",
+    "amount": "-\$13.40"
+  },
+  {
+    "name": "EFT",
+    "photo": "assets/images/pay.png",
+    "date": "1st Agu 2022",
+    "amount": "+\$30.00"
+  },
+  {
+    "name": "Debt Payment",
+    "photo": "assets/images/debt.png",
+    "date": "23th Agu 2022",
+    "amount": "-\$120.00"
+  },
+  {
+    "name": "Shopping",
+    "photo": "assets/images/shopping-cart.png",
+    "date": "30th Agu 2022",
+    "amount": "+\$30.00"
+  },
+];

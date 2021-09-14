@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bankingapp/main.dart';
+import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(MaterialApp(home: MySplash()));
@@ -14,7 +15,7 @@ class _MySplashState extends State<MySplash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => MyBottomNavigationBar()));
     });
@@ -23,11 +24,9 @@ class _MySplashState extends State<MySplash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            image:
-                DecorationImage(image: AssetImage("assets/images/splash.jpg"))),
-      ),
-    );
+        body: Lottie.asset(
+      'assets/splash.mp4.lottie.json',
+      fit: BoxFit.fill,
+    ));
   }
 }
