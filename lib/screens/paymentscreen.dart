@@ -1,27 +1,11 @@
 import 'package:bankingapp/constants/color.dart';
 import 'package:bankingapp/constants/themeStyles.dart';
-import 'package:bankingapp/widget/addNote.dart';
-import 'package:bankingapp/widget/cardInPage.dart';
 import 'package:bankingapp/widget/otherDetailsDivider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class PaymentScreen extends StatefulWidget {
-  final String title;
-  final String subTitle;
-  final String price;
-  final String letter;
-  final String color;
-
-  PaymentScreen({
-    required this.color,
-    required this.letter,
-    required this.price,
-    required this.subTitle,
-    required this.title,
-  });
-
   @override
   State<PaymentScreen> createState() => _PaymentScreen();
 }
@@ -34,7 +18,6 @@ class _PaymentScreen extends State<PaymentScreen> {
         appBar: AppBar(
           title: const Text('Payment Screen'),
           backgroundColor: Colors.indigo, // status bar color
-          brightness: Brightness.dark,
           centerTitle: true,
           elevation: 0.0,
           leading: IconButton(
@@ -60,13 +43,6 @@ class _PaymentScreen extends State<PaymentScreen> {
                       ],
                     ),
                   ),
-                  CardInPage(
-                    color: widget.color,
-                    title: widget.title,
-                    subTitle: widget.subTitle,
-                    price: widget.price,
-                    letter: widget.letter,
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 16, top: 32, bottom: 8),
@@ -82,7 +58,7 @@ class _PaymentScreen extends State<PaymentScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
-                          child: SvgPicture.asset('assets/transfer.svg'),
+                          child: SvgPicture.asset('assets/svg/transfer.svg'),
                         ),
                         Text('Bank Transfer',
                             style: ThemeStyles.otherDetailsPrimary),
@@ -136,7 +112,7 @@ class _PaymentScreen extends State<PaymentScreen> {
                                       style: ThemeStyles.tagText)),
                             ),
                           ),
-                          SvgPicture.asset('assets/edit.svg'),
+                          SvgPicture.asset('assets/svg/edit.svg'),
                         ],
                       )),
                   OtherDetailsDivider(),
@@ -236,7 +212,6 @@ class _PaymentScreen extends State<PaymentScreen> {
                   OtherDetailsDivider(),
                 ],
               ),
-              AddNote(),
             ],
           ),
         ));

@@ -19,7 +19,6 @@ class _CoinScreen extends State<CoinScreen> {
       appBar: AppBar(
         title: const Text('Coin Screen'),
         backgroundColor: Colors.indigo, // status bar color
-        brightness: Brightness.dark,
       ),
       body: Container(
         child: ListView(

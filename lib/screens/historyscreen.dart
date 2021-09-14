@@ -13,7 +13,6 @@ class _HistoryScreen extends State<HistoryScreen> {
       appBar: AppBar(
         title: Text('Transfer Histories'),
         backgroundColor: Colors.indigo, // status bar color
-        brightness: Brightness.dark,
       ),
       body: Container(
         child: ListView(

@@ -57,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Home Page'),
         backgroundColor: Colors.indigo, // status bar color
-        brightness: Brightness.dark,
       ),
       body: SafeArea(
           child: Container(
