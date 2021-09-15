@@ -1,37 +1,4 @@
-/*
-class TransactionsTb {
-  late int? transactionid;
-  late String transactionname;
-  late String transactiondate;
-  late String transactionprice;
-
-  //Constructor
-  TransactionsTb(
-      {required this.transactionid,
-      required this.transactionname,
-      required this.transactiondate,
-      required this.transactionprice});
-
-  // Extract a Product Object from a Map Oject
-  TransactionsTb.fromMap(Map<String, dynamic> map) {
-    transactionid = map['transaction_id'];
-    transactionname = map['transaction_name'];
-    transactiondate = map['transaction_date'];
-    transactionprice = map['transaction_price'];
-  }
-
-  Map<String, dynamic> toMap() {
-    var map = <String, dynamic>{
-      'transaction_id': transactionid,
-      'transaction_name': transactionname,
-      'transaction_date': transactiondate,
-      'transaction_price': transactionprice
-    };
-    return map;
-  }
-}
-
-*/
+// transaction model for trasaction histories for homepage
 
 class TransactionModel {
   String name;
