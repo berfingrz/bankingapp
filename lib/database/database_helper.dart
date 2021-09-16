@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:bankingapp/models/coin.dart';
 import 'package:bankingapp/models/histories.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
@@ -46,8 +47,14 @@ class DbHelper {
     return result.map((data) => Histories.fromMap(data)).toList();
   }
 
-  /* Future closeDb() async {
+  Future<List<Coins>> getCoins() async {
+    var dbClient = await db;
+    var result = await dbClient.rawQuery("SELECT * FROM Coins");
+    return result.map((data) => Coins.fromMap(data)).toList();
+  }
+
+  Future closeDb() async {
     var dbClient = await db;
     dbClient.close();
-  } */
+  }
 }

@@ -17,7 +17,7 @@ class ThemeStyles {
     color: black,
   );
   static TextStyle otherDetailsSecondary = TextStyle(
-    fontSize: 12.0,
+    fontSize: 15.0,
     color: Colors.grey,
   );
 }

@@ -1,5 +1,7 @@
 import 'package:bankingapp/constants/color.dart';
+import 'package:bankingapp/database/database_helper.dart';
 import 'package:bankingapp/models/coin.dart';
+import 'package:bankingapp/widget/checkconnection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,6 +15,97 @@ class CoinScreen extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _CoinScreen extends State<CoinScreen> {
+  final dbHelper = DbHelper();
+  final checkconnection = CheckConnection();
+
+  @override
+  void initState() {
+    dbHelper.initDb();
+    checkconnection.checkConnection();
+    super.initState();
+  }
+
+  Widget projectWidget() {
+    return FutureBuilder<List<Coins>>(
+        future: dbHelper.getCoins(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData && snapshot.data!.length > 0)
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  Coins coins = snapshot.data![index];
+                  return Container(
+                    height: 76,
+                    margin: EdgeInsets.only(bottom: 13),
+                    padding: EdgeInsets.only(
+                        bottom: 12, right: 22, top: 12, left: 24),
+                    decoration: BoxDecoration(
+                        color: kWhiteColor,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                              color: kTenBlackColor,
+                              blurRadius: 10,
+                              spreadRadius: 5,
+                              offset: Offset(8, 8))
+                        ]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: 57,
+                          width: 57,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: new AssetImage(
+                                  "assets/images/${coins.cryptoIconURL}"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 13,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              coins.name,
+                              style: GoogleFonts.inter(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: kBlackColor),
+                            ),
+                            Text(
+                              coins.currency,
+                              style: GoogleFonts.inter(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500,
+                                  color: kGreyColor),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              coins.amount,
+                              style: GoogleFonts.inter(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: kBlueColor),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                });
+          else
+            return Container();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +113,8 @@ class _CoinScreen extends State<CoinScreen> {
         title: const Text('Coin Screen'),
         backgroundColor: Colors.indigo, // status bar color
       ),
-      body: Container(
+      body: projectWidget(),
+/*       body: Container(
         child: ListView(
           physics: ClampingScrollPhysics(),
           children: <Widget>[
@@ -135,7 +229,7 @@ class _CoinScreen extends State<CoinScreen> {
                 }),
           ],
         ),
-      ),
+      ), */
     );
   }
 }

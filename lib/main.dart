@@ -4,6 +4,7 @@ import 'package:bankingapp/screens/homescreen.dart';
 import 'package:bankingapp/screens/coinscreen.dart';
 import 'package:bankingapp/screens/paymentscreen.dart';
 import 'package:bankingapp/screens/historyscreen.dart';
+import 'package:bankingapp/screens/settingsscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,6 +36,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     HistoryScreen(),
     PaymentScreen(),
     CoinScreen(),
+    SettingsScreen(),
   ];
 
   void onTappedBar(int index) {
@@ -67,6 +69,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
               BottomNavigationBarItem(
                 icon: new Icon(Icons.money),
                 label: 'Coin',
+              ),
+              BottomNavigationBarItem(
+                icon: new Icon(Icons.settings),
+                label: 'Settings',
               ),
             ],
           ),
