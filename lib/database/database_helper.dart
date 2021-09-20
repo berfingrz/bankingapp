@@ -33,12 +33,6 @@ class DbHelper {
 
     //open the database
     return await openDatabase(path);
-
-    /*
-    var dbFolder = await getDatabasesPath();
-    String path = join(dbFolder, 'app.db');
-    
-    return await openDatabase(path);*/
   }
 
   Future<List<Histories>> getHistories() async {
@@ -51,10 +45,5 @@ class DbHelper {
     var dbClient = await db;
     var result = await dbClient.rawQuery("SELECT * FROM Coins");
     return result.map((data) => Coins.fromMap(data)).toList();
-  }
-
-  Future closeDb() async {
-    var dbClient = await db;
-    dbClient.close();
   }
 }
